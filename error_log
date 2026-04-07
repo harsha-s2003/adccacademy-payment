@@ -1,0 +1,2 @@
+[05-Feb-2025 11:35:35 Asia/Kolkata] PHP Fatal error:  Cannot redeclare Welcome::payment_history() in /home3/adccacademy/public_html/epay/application/controllers/Welcome.php on line 673
+[05-Feb-2025 11:35:55 Asia/Kolkata] PHP Fatal error:  Cannot redeclare Welcome::payment_history() in /home3/adccacademy/public_html/epay/application/controllers/Welcome.php on line 673
