@@ -29,7 +29,11 @@ $TxnRefNo = $ranNo;
         <div class="row">
             <div class="col-lg-8 ">
                 <div class="card p-3 border-0">
-
+                    <?php if($this->session->flashdata('error')): ?>
+							<div class="alert alert-danger" role="alert">
+								<?php echo $this->session->flashdata('error'); ?>
+							</div>
+						<?php endif; ?>
                     <h4 class="fw-lighter mb-3">Student Details</h5>
                         <div class="table-responsiven">
 
