@@ -271,7 +271,7 @@ public function getProgramData()
 				'mobile'=>$_SESSION['adccepay']->mobile,
 				'transation_id'=>$_POST['TxnRefNo']
 			);
-
+			
 			$this->Common_model->SaveData('student_fee_details',$data_Arr);
 
 		} else {
@@ -372,6 +372,7 @@ public function payment_history()
 	if(!empty($_SESSION['adccepay']))
 	{
 		$getData = $this->Common_model->GetData('student_fee_details','',"student_id='".$_SESSION['adccepay']->id."' and bank_trans_id!=''",'','','','');
+		
 		$data['studentfeeD'] = $getData;
 		$this->load->view('header');
 	    $this->load->view('payment-history',$data);
@@ -384,19 +385,23 @@ public function payment_history()
 
 public function payment_invoice($sid)
 {
-	if(!empty($_SESSION['adccepay']))
-	{
+	if (!empty($_SESSION['adccepay'])) {
 		$getData = $this->Common_model->GetData('student_fee_details','',"id='".$sid."'",'','','','1');
+		if (empty($getData)) {
+			show_404();
+			return;
+		}
+		
 		$getSchData = $this->Common_model->GetData('student_reg','',"id='".$getData->student_id."'",'','','','1');
+		$getProgramData = $this->Common_model->GetData('student_program','',"program_name='".$getSchData->program."'",'','','','1');
+		
 		$getAmountNumber = $this->convert_number($getData->fee_amt);
 		$data['studentfeeD'] = $getData;
 		$data['school'] = $getSchData;
+		$data['program'] = $getProgramData;
 		$data['word'] = $getAmountNumber;
-		$this->load->view('header');
-	    $this->load->view('invoice',$data);
-	    $this->load->view('footer');	
-	}
-	else {
+		$this->load->view('invoice',$data);
+	} else {
 		redirect(site_url('login'));
 	}
 }
