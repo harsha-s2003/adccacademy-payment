@@ -93,9 +93,9 @@ class Payment extends CI_Controller {
             }
             // If it was failed, we'll update it below
         }
-
+        $program = trim($this->input->post('program', true))? trim($this->input->post('program', true)) : $sessionUser->program;
         $feeData = [
-            'program' => isset($sessionUser->program) ? $sessionUser->program : '',
+            'program' => $program,
             'fee_amt' => $amountFormatted,
             'student_id' => $sessionUser->id,
             'mobile' => isset($sessionUser->mobile) ? $sessionUser->mobile : '',

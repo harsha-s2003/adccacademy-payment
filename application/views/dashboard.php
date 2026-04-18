@@ -64,6 +64,7 @@ $TxnRefNo = $ranNo;
                                 <tr>
                                     <td>Fees</td>
                                     <td>
+                                    <form method="POST" action="<?= base_url('payment/pay'); ?>">
 
                                         <?php foreach ($getPPData as $getPPDataR) { ?>
 
@@ -78,8 +79,7 @@ $TxnRefNo = $ranNo;
 
                                         <hr>
 
-                                        <form method="POST" action="<?= base_url('payment/pay'); ?>">
-
+                                        
                                             <input type="hidden" name="TxnRefNo"
                                                 value="<?= 'TXN'.rand(10000,99999); ?>">
 

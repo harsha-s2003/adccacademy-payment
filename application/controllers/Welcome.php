@@ -393,10 +393,11 @@ public function payment_invoice($sid)
 		}
 		
 		$getSchData = $this->Common_model->GetData('student_reg','',"id='".$getData->student_id."'",'','','','1');
-		$getProgramData = $this->Common_model->GetData('student_program','',"program_name='".$getSchData->program."'",'','','','1');
+		$getProgramData = $this->Common_model->GetData('student_program','',"program_name='".$getData->program."'",'','','','1');
 		
 		$getAmountNumber = $this->convert_number($getData->fee_amt);
 		$data['studentfeeD'] = $getData;
+		
 		$data['school'] = $getSchData;
 		$data['program'] = $getProgramData;
 		$data['word'] = $getAmountNumber;
