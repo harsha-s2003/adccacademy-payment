@@ -47,7 +47,7 @@
 												<td><?= $studentfeeDR->bank_remark;?></td>
 												
 												<td><?= date('d-m-Y',strtotime($studentfeeDR->created));?></td>
-												<?php if($studentfeeDR->bank_remark=='Transaction Successful') { ?>
+												<?php if($studentfeeDR->payment_status =='Done') { ?>
 												<td><a href="<?= site_url('payment-invoice/'.$studentfeeDR->id);?>" target="_blank"><button type="button" class="btn btn-sm btn-success">Download Receipt</button></a>
 													
 												</td>
